@@ -34,24 +34,24 @@
 // Declaração de várias funções utilizadas em main().  Essas estão definidas
 // logo após a definição de main() neste arquivo.
 GLuint BuildTriangles(); // Constrói triângulos para renderização
-GLuint LoadShader_Vertex(const char* filename);   // Carrega um vertex shader
-GLuint LoadShader_Fragment(const char* filename); // Carrega um fragment shader
-void LoadShader(const char* filename, GLuint shader_id); // Função utilizada pelas duas acima
+GLuint LoadShader_Vertex(const char *filename);   // Carrega um vertex shader
+GLuint LoadShader_Fragment(const char *filename); // Carrega um fragment shader
+void LoadShader(const char *filename, GLuint shader_id); // Função utilizada pelas duas acima
 GLuint CreateGpuProgram(GLuint vertex_shader_id, GLuint fragment_shader_id); // Cria um programa de GPU
 
 // Funções callback para comunicação com o sistema operacional e interação do
 // usuário. Veja mais comentários nas definições das mesmas, abaixo.
-void FramebufferSizeCallback(GLFWwindow* window, int width, int height);
-void ErrorCallback(int error, const char* description);
-void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mode);
+void FramebufferSizeCallback(GLFWwindow *window, int width, int height);
 
-int main()
-{
+void ErrorCallback(int error, const char *description);
+
+void KeyCallback(GLFWwindow *window, int key, int scancode, int action, int mode);
+
+int main() {
     // Inicializamos a biblioteca GLFW, utilizada para criar uma janela do
     // sistema operacional, onde poderemos renderizar com OpenGL.
     int success = glfwInit();
-    if (!success)
-    {
+    if (!success) {
         fprintf(stderr, "ERROR: glfwInit() failed.\n");
         std::exit(EXIT_FAILURE);
     }
@@ -63,9 +63,9 @@ int main()
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 
-    #ifdef __APPLE__
+#ifdef __APPLE__
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
-    #endif
+#endif
 
     // Pedimos para utilizar o perfil "core", isto é, utilizaremos somente as
     // funções modernas de OpenGL.
@@ -73,10 +73,9 @@ int main()
 
     // Criamos uma janela do sistema operacional, com 500 colunas e 500 linhas
     // de pixels, e com título "INF01047 ...".
-    GLFWwindow* window;
+    GLFWwindow *window;
     window = glfwCreateWindow(500, 500, "INF01047 - 208695 - Lucas Guaitanelli da Silveira", NULL, NULL);
-    if (!window)
-    {
+    if (!window) {
         glfwTerminate();
         fprintf(stderr, "ERROR: glfwCreateWindow() failed.\n");
         std::exit(EXIT_FAILURE);
@@ -99,9 +98,9 @@ int main()
     gladLoadGLLoader((GLADloadproc) glfwGetProcAddress);
 
     // Imprimimos no terminal informações sobre a GPU do sistema
-    const GLubyte *vendor      = glGetString(GL_VENDOR);
-    const GLubyte *renderer    = glGetString(GL_RENDERER);
-    const GLubyte *glversion   = glGetString(GL_VERSION);
+    const GLubyte *vendor = glGetString(GL_VENDOR);
+    const GLubyte *renderer = glGetString(GL_RENDERER);
+    const GLubyte *glversion = glGetString(GL_VERSION);
     const GLubyte *glslversion = glGetString(GL_SHADING_LANGUAGE_VERSION);
 
     printf("GPU: %s, %s, OpenGL %s, GLSL %s\n", vendor, renderer, glversion, glslversion);
@@ -139,8 +138,7 @@ int main()
     GLuint vertex_array_object_id = BuildTriangles();
 
     // Ficamos em um loop infinito, renderizando, até que o usuário feche a janela
-    while (!glfwWindowShouldClose(window))
-    {
+    while (!glfwWindowShouldClose(window)) {
         // Aqui executamos as operações de renderização
 
         // Definimos a cor do "fundo" do framebuffer como branco.  Tal cor é
@@ -200,8 +198,7 @@ int main()
 }
 
 // Constrói triângulos para futura renderização
-GLuint BuildTriangles()
-{
+GLuint BuildTriangles() {
     // Primeiro, definimos os atributos de cada vértice.
 
     // A posição de cada vértice é definida por coeficientes em "normalized
@@ -216,33 +213,33 @@ GLuint BuildTriangles()
     // Este vetor "NDC_coefficients" define a GEOMETRIA (veja slide 114 do documento "Aula_04_Modelagem_Geometrica_3D.pdf").
     //
     GLfloat NDC_coefficients[] = {
-    //    X      Y     Z     W
-        // descricao do trabalho = 0,7unidades do vertice central ateh os demais, e 17 no total.
-        // logo temos 3 vertices por quadrante, e usando alguma trigonometria descobre-se os valores dos pontos.
+            //    X      Y     Z     W
+            // descricao do trabalho = 0,7unidades do vertice central ateh os demais, e 17 no total.
+            // logo temos 3 vertices por quadrante, e usando alguma trigonometria descobre-se os valores dos pontos.
 
-         // central
-         0.0f,  0.0f, 0.0f, 1.0f,   // 0
-         // nos eixos
-         0.0f, -0.7f, 0.0f, 1.0f,   // 1 -y
-         0.7f,  0.0f, 0.0f, 1.0f,   // 2 +x
-         0.0f,  0.7f, 0.0f, 1.0f,   // 3 +y
-        -0.7f,  0.0f, 0.0f, 1.0f,   // 4 -x
-         //+x+y
-         0.6467f,  0.2679f, 0.0f, 1.0f,     // 5
-         0.495f,   0.495f,  0.0f, 1.0f,     // 6
-         0.2679f,  0.6467f, 0.0f, 1.0f,     // 7
-         //-x+y
-        -0.6467f,  0.2679f, 0.0f, 1.0f,     // 8
-        -0.495f,   0.495f,  0.0f, 1.0f,     // 9
-        -0.2679f,  0.6467f, 0.0f, 1.0f,     // 10
-         //-x-y
-        -0.6467f, -0.2679f, 0.0f, 1.0f,     // 11
-        -0.495f,  -0.495f,  0.0f, 1.0f,     // 12
-        -0.2679f, -0.6467f, 0.0f, 1.0f,     // 13
-         //+x-y
-         0.6467f, -0.2679f, 0.0f, 1.0f,     // 14
-         0.495f,  -0.495f,  0.0f, 1.0f,     // 15
-         0.2679f, -0.6467f, 0.0f, 1.0f,     // 16
+            // central
+            0.0f, 0.0f, 0.0f, 1.0f,   // 0
+            // nos eixos
+            0.0f, -0.7f, 0.0f, 1.0f,   // 1 -y
+            0.7f, 0.0f, 0.0f, 1.0f,   // 2 +x
+            0.0f, 0.7f, 0.0f, 1.0f,   // 3 +y
+            -0.7f, 0.0f, 0.0f, 1.0f,   // 4 -x
+            //+x+y
+            0.6467f, 0.2679f, 0.0f, 1.0f,     // 5
+            0.495f, 0.495f, 0.0f, 1.0f,     // 6
+            0.2679f, 0.6467f, 0.0f, 1.0f,     // 7
+            //-x+y
+            -0.6467f, 0.2679f, 0.0f, 1.0f,     // 8
+            -0.495f, 0.495f, 0.0f, 1.0f,     // 9
+            -0.2679f, 0.6467f, 0.0f, 1.0f,     // 10
+            //-x-y
+            -0.6467f, -0.2679f, 0.0f, 1.0f,     // 11
+            -0.495f, -0.495f, 0.0f, 1.0f,     // 12
+            -0.2679f, -0.6467f, 0.0f, 1.0f,     // 13
+            //+x-y
+            0.6467f, -0.2679f, 0.0f, 1.0f,     // 14
+            0.495f, -0.495f, 0.0f, 1.0f,     // 15
+            0.2679f, -0.6467f, 0.0f, 1.0f,     // 16
 
 
     };
@@ -304,7 +301,7 @@ GLuint BuildTriangles()
     // está dentro do VAO "ligado" acima por glBindVertexArray().
     // Veja https://www.khronos.org/opengl/wiki/Vertex_Specification#Vertex_Buffer_Object
     GLuint location = 0; // "(location = 0)" em "shader_vertex.glsl"
-    GLint  number_of_dimensions = 4; // vec4 em "shader_vertex.glsl"
+    GLint number_of_dimensions = 4; // vec4 em "shader_vertex.glsl"
     glVertexAttribPointer(location, number_of_dimensions, GL_FLOAT, GL_FALSE, 0, 0);
 
     // "Ativamos" os atributos. Informamos que os atributos com índice de local
@@ -322,28 +319,28 @@ GLuint BuildTriangles()
     // isto é: Vermelho, Verde, Azul, Alpha (valor de transparência).
     // Conversaremos sobre sistemas de cores nas aulas de Modelos de Iluminação.
     GLfloat color_coefficients[] = {
-    //  R     G     B     A
-        1.0f, 0.0f, 0.0f, 1.0f,
+            //  R     G     B     A
+            1.0f, 0.0f, 0.0f, 1.0f,
 
-        0.0f, 0.0f, 1.0f, 1.0f,
-        0.0f, 0.0f, 1.0f, 1.0f,
-        0.0f, 0.0f, 1.0f, 1.0f,
-        0.0f, 0.0f, 1.0f, 1.0f,
+            0.0f, 0.0f, 1.0f, 1.0f,
+            0.0f, 0.0f, 1.0f, 1.0f,
+            0.0f, 0.0f, 1.0f, 1.0f,
+            0.0f, 0.0f, 1.0f, 1.0f,
 
-        0.0f, 0.0f, 1.0f, 1.0f,
-        0.0f, 0.0f, 1.0f, 1.0f,
-        0.0f, 0.0f, 1.0f, 1.0f,
-        0.0f, 0.0f, 1.0f, 1.0f,
+            0.0f, 0.0f, 1.0f, 1.0f,
+            0.0f, 0.0f, 1.0f, 1.0f,
+            0.0f, 0.0f, 1.0f, 1.0f,
+            0.0f, 0.0f, 1.0f, 1.0f,
 
-        0.0f, 0.0f, 1.0f, 1.0f,
-        0.0f, 0.0f, 1.0f, 1.0f,
-        0.0f, 0.0f, 1.0f, 1.0f,
-        0.0f, 0.0f, 1.0f, 1.0f,
+            0.0f, 0.0f, 1.0f, 1.0f,
+            0.0f, 0.0f, 1.0f, 1.0f,
+            0.0f, 0.0f, 1.0f, 1.0f,
+            0.0f, 0.0f, 1.0f, 1.0f,
 
-        0.0f, 0.0f, 1.0f, 1.0f,
-        0.0f, 0.0f, 1.0f, 1.0f,
-        0.0f, 0.0f, 1.0f, 1.0f,
-        0.0f, 0.0f, 1.0f, 1.0f
+            0.0f, 0.0f, 1.0f, 1.0f,
+            0.0f, 0.0f, 1.0f, 1.0f,
+            0.0f, 0.0f, 1.0f, 1.0f,
+            0.0f, 0.0f, 1.0f, 1.0f
 
     };
     GLuint VBO_color_coefficients_id;
@@ -364,32 +361,32 @@ GLuint BuildTriangles()
     //
     // Este vetor "indices" define a TOPOLOGIA (veja slide 114 do documento "Aula_04_Modelagem_Geometrica_3D.pdf").
     //
-    GLubyte indices[] = { 0,3,10, 0,10,9,  0,9,8,   0,8,4,
-                          0,4,11, 0,11,12, 0,12,13, 0,13,1,
-                          0,1,16, 0,16,15, 0,15,14,  0,14,2,
-                          0,2,5,  0,5,6,   0,6,7,   0,7,3 }; // GLubyte: valores entre 0 e 255 (8 bits sem sinal).
+    GLubyte indices[] = {0, 3, 10, 0, 10, 9, 0, 9, 8, 0, 8, 4,
+                         0, 4, 11, 0, 11, 12, 0, 12, 13, 0, 13, 1,
+                         0, 1, 16, 0, 16, 15, 0, 15, 14, 0, 14, 2,
+                         0, 2, 5, 0, 5, 6, 0, 6, 7, 0, 7, 3}; // GLubyte: valores entre 0 e 255 (8 bits sem sinal).
 
-         //    X      Y     Z     W
-         // central
+    //    X      Y     Z     W
+    // central
 //         0.0f,  0.0f, 0.0f, 1.0f,   // 0
-         // nos eixos
+    // nos eixos
 //         0.0f, -0.7f, 0.0f, 1.0f,   // 1 -y
 //         0.7f,  0.0f, 0.0f, 1.0f,   // 2 +x
 //         0.0f,  0.7f, 0.0f, 1.0f,   // 3 +y
 //         -0.7f, 0.0f, 0.0f, 1.0f,   // 4 -x
-         //+x+y
+    //+x+y
 //         0.6467f,  0.2679f, 0.0f, 1.0f,     // 5
 //         0.495f,   0.495f,  0.0f, 1.0f,     // 6
 //         0.2679f,  0.6467f, 0.0f, 1.0f,     // 7
-         //-x+y
+    //-x+y
 //        -0.6467f,  0.2679f, 0.0f, 1.0f,     // 8
 //        -0.495f,   0.495f,  0.0f, 1.0f,     // 9
 //        -0.2679f,  0.6467f, 0.0f, 1.0f,     // 10
-         //-x-y
+    //-x-y
 //        -0.6467f, -0.2679f, 0.0f, 1.0f,     // 11
 //        -0.495f,  -0.495f,  0.0f, 1.0f,     // 12
 //        -0.2679f, -0.6467f, 0.0f, 1.0f,     // 13
-         //+x-y
+    //+x-y
 //         0.6467f, -0.2679f, 0.0f, 1.0f,     // 14
 //         0.495f,  -0.495f,  0.0f, 1.0f,     // 15
 //         0.2679f, -0.6467f, 0.0f, 1.0f,     // 16
@@ -424,8 +421,7 @@ GLuint BuildTriangles()
 }
 
 // Carrega um Vertex Shader de um arquivo. Veja definição de LoadShader() abaixo.
-GLuint LoadShader_Vertex(const char* filename)
-{
+GLuint LoadShader_Vertex(const char *filename) {
     // Criamos um identificador (ID) para este shader, informando que o mesmo
     // será aplicado nos vértices.
     GLuint vertex_shader_id = glCreateShader(GL_VERTEX_SHADER);
@@ -438,8 +434,7 @@ GLuint LoadShader_Vertex(const char* filename)
 }
 
 // Carrega um Fragment Shader de um arquivo. Veja definição de LoadShader() abaixo.
-GLuint LoadShader_Fragment(const char* filename)
-{
+GLuint LoadShader_Fragment(const char *filename) {
     // Criamos um identificador (ID) para este shader, informando que o mesmo
     // será aplicado nos fragmentos.
     GLuint fragment_shader_id = glCreateShader(GL_FRAGMENT_SHADER);
@@ -453,8 +448,7 @@ GLuint LoadShader_Fragment(const char* filename)
 
 // Função auxilar, utilizada pelas duas funções acima. Carrega código de GPU de
 // um arquivo GLSL e faz sua compilação.
-void LoadShader(const char* filename, GLuint shader_id)
-{
+void LoadShader(const char *filename, GLuint shader_id) {
     // Lemos o arquivo de texto indicado pela variável "filename"
     // e colocamos seu conteúdo em memória, apontado pela variável
     // "shader_string".
@@ -462,15 +456,15 @@ void LoadShader(const char* filename, GLuint shader_id)
     try {
         file.exceptions(std::ifstream::failbit);
         file.open(filename);
-    } catch ( std::exception& e ) {
+    } catch (std::exception &e) {
         fprintf(stderr, "ERROR: Cannot open file \"%s\".\n", filename);
         std::exit(EXIT_FAILURE);
     }
     std::stringstream shader;
     shader << file.rdbuf();
     std::string str = shader.str();
-    const GLchar* shader_string = str.c_str();
-    const GLint   shader_string_length = static_cast<GLint>( str.length() );
+    const GLchar *shader_string = str.c_str();
+    const GLint shader_string_length = static_cast<GLint>( str.length());
 
     // Define o código do shader GLSL, contido na string "shader_string"
     glShaderSource(shader_id, 1, &shader_string, &shader_string_length);
@@ -487,25 +481,21 @@ void LoadShader(const char* filename, GLuint shader_id)
 
     // Alocamos memória para guardar o log de compilação.
     // A chamada "new" em C++ é equivalente ao "malloc()" do C.
-    GLchar* log = new GLchar[log_length];
+    GLchar *log = new GLchar[log_length];
     glGetShaderInfoLog(shader_id, log_length, &log_length, log);
 
     // Imprime no terminal qualquer erro ou "warning" de compilação
-    if ( log_length != 0 )
-    {
-        std::string  output;
+    if (log_length != 0) {
+        std::string output;
 
-        if ( !compiled_ok )
-        {
+        if (!compiled_ok) {
             output += "ERROR: OpenGL compilation of \"";
             output += filename;
             output += "\" failed.\n";
             output += "== Start of compilation log\n";
             output += log;
             output += "== End of compilation log\n";
-        }
-        else
-        {
+        } else {
             output += "WARNING: OpenGL compilation of \"";
             output += filename;
             output += "\".\n";
@@ -518,13 +508,12 @@ void LoadShader(const char* filename, GLuint shader_id)
     }
 
     // A chamada "delete" em C++ é equivalente ao "free()" do C
-    delete [] log;
+    delete[] log;
 }
 
 // Esta função cria um programa de GPU, o qual contém obrigatoriamente um
 // Vertex Shader e um Fragment Shader.
-GLuint CreateGpuProgram(GLuint vertex_shader_id, GLuint fragment_shader_id)
-{
+GLuint CreateGpuProgram(GLuint vertex_shader_id, GLuint fragment_shader_id) {
     // Criamos um identificador (ID) para este programa de GPU
     GLuint program_id = glCreateProgram();
 
@@ -540,14 +529,13 @@ GLuint CreateGpuProgram(GLuint vertex_shader_id, GLuint fragment_shader_id)
     glGetProgramiv(program_id, GL_LINK_STATUS, &linked_ok);
 
     // Imprime no terminal qualquer erro de linkagem
-    if ( linked_ok == GL_FALSE )
-    {
+    if (linked_ok == GL_FALSE) {
         GLint log_length = 0;
         glGetProgramiv(program_id, GL_INFO_LOG_LENGTH, &log_length);
 
         // Alocamos memória para guardar o log de compilação.
         // A chamada "new" em C++ é equivalente ao "malloc()" do C.
-        GLchar* log = new GLchar[log_length];
+        GLchar *log = new GLchar[log_length];
 
         glGetProgramInfoLog(program_id, log_length, &log_length, log);
 
@@ -559,7 +547,7 @@ GLuint CreateGpuProgram(GLuint vertex_shader_id, GLuint fragment_shader_id)
         output += "== End of link log\n";
 
         // A chamada "delete" em C++ é equivalente ao "free()" do C
-        delete [] log;
+        delete[] log;
 
         fprintf(stderr, "%s", output.c_str());
     }
@@ -571,8 +559,7 @@ GLuint CreateGpuProgram(GLuint vertex_shader_id, GLuint fragment_shader_id)
 // Definição da função que será chamada sempre que a janela do sistema
 // operacional for redimensionada, por consequência alterando o tamanho do
 // "framebuffer" (região de memória onde são armazenados os pixels da imagem).
-void FramebufferSizeCallback(GLFWwindow* window, int width, int height)
-{
+void FramebufferSizeCallback(GLFWwindow *window, int width, int height) {
     // Indicamos que queremos renderizar em toda região do framebuffer. A
     // função "glViewport" define o mapeamento das "normalized device
     // coordinates" (NDC) para "pixel coordinates".  Essa é a operação de
@@ -582,8 +569,7 @@ void FramebufferSizeCallback(GLFWwindow* window, int width, int height)
 
 // Definição da função que será chamada sempre que o usuário pressionar alguma
 // tecla do teclado. Veja http://www.glfw.org/docs/latest/input_guide.html#input_key
-void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mode)
-{
+void KeyCallback(GLFWwindow *window, int key, int scancode, int action, int mode) {
     // ==============
     // Não modifique este loop! Ele é utilizando para correção automatizada dos
     // laboratórios. Deve ser sempre o primeiro comando desta função KeyCallback().
@@ -598,8 +584,7 @@ void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mode
 }
 
 // Definimos o callback para impressão de erros da GLFW no terminal
-void ErrorCallback(int error, const char* description)
-{
+void ErrorCallback(int error, const char *description) {
     fprintf(stderr, "ERROR: GLFW: %s\n", description);
 }
 

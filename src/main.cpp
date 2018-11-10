@@ -221,23 +221,22 @@ GLuint BuildTriangles()
 
     int vertexNumber = 32;
     GLfloat NDC_coefficients[34];
-        int i;
-        for(i=0; i<(vertexNumber); i++){
-            if (i % 2 == 0){
+    int i;
+    for (i = 0; i < (vertexNumber); i++) {
+        if (i % 2 == 0) {
 
-                NDC_coefficients[i*4+0] = cos(PI*2 * ((float)i / (float)vertexNumber)) *0.5;
-                NDC_coefficients[i*4+1] = sin(PI*2 * ((float)i / (float)vertexNumber)) *0.5;
-                NDC_coefficients[i*4+2] = 0.0f;
-                NDC_coefficients[i*4+3] = 1.0f;
+            NDC_coefficients[i * 4 + 0] = cos(PI * 2 * ((float) i / (float) vertexNumber)) * 0.5;
+            NDC_coefficients[i * 4 + 1] = sin(PI * 2 * ((float) i / (float) vertexNumber)) * 0.5;
+            NDC_coefficients[i * 4 + 2] = 0.0f;
+            NDC_coefficients[i * 4 + 3] = 1.0f;
 
-            }
-            else{
-                NDC_coefficients[i*4+0] = cos(PI*2 * ((float)i / (float)vertexNumber))*0.7;
-                NDC_coefficients[i*4+1] = sin(PI*2 * ((float)i / (float)vertexNumber))*0.7;
-                NDC_coefficients[i*4+2] = 0.0f;
-                NDC_coefficients[i*4+3] = 1.0f;
-            }
+        } else {
+            NDC_coefficients[i * 4 + 0] = cos(PI * 2 * ((float) i / (float) vertexNumber)) * 0.7;
+            NDC_coefficients[i * 4 + 1] = sin(PI * 2 * ((float) i / (float) vertexNumber)) * 0.7;
+            NDC_coefficients[i * 4 + 2] = 0.0f;
+            NDC_coefficients[i * 4 + 3] = 1.0f;
         }
+    }
 
 
 
@@ -317,22 +316,18 @@ GLuint BuildTriangles()
     // Conversaremos sobre sistemas de cores nas aulas de Modelos de Iluminação.
     GLfloat color_coefficients[128];
 
-    for(i=0; i<(vertexNumber); i++)
-    {
-        if (i % 2 != 0)
-        {
-            color_coefficients[i*4] = 0.0f;
-            color_coefficients[i*4+1] = 0.0f;
-            color_coefficients[i*4+2] = 1.0f;
-            color_coefficients[i*4+3] = 1.0f;
-        }
-        else
-        {
+    for (i = 0; i < (vertexNumber); i++) {
+        if (i % 2 != 0) {
+            color_coefficients[i * 4] = 0.0f;
+            color_coefficients[i * 4 + 1] = 0.0f;
+            color_coefficients[i * 4 + 2] = 1.0f;
+            color_coefficients[i * 4 + 3] = 1.0f;
+        } else {
 
-            color_coefficients[i*4] = 1.0f;
-            color_coefficients[i*4+1] = 0.0f;
-            color_coefficients[i*4+2] = 0.0f;
-            color_coefficients[i*4+3] = 1.0f;
+            color_coefficients[i * 4] = 1.0f;
+            color_coefficients[i * 4 + 1] = 0.0f;
+            color_coefficients[i * 4 + 2] = 0.0f;
+            color_coefficients[i * 4 + 3] = 1.0f;
         }
     }
     GLuint VBO_color_coefficients_id;
@@ -356,14 +351,13 @@ GLuint BuildTriangles()
 
     GLubyte indices[34];
 
-        int j=0;
+    int j = 0;
 
-        for(j=0; j<(vertexNumber); j++)
-        {
-            indices[j] = j;
-        }
-        indices[32] = 0;
-        indices[33] = 1;
+    for (j = 0; j < (vertexNumber); j++) {
+        indices[j] = j;
+    }
+    indices[32] = 0;
+    indices[33] = 1;
 
     // Criamos um buffer OpenGL para armazenar os índices acima
     GLuint indices_id;
