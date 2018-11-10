@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="Laboratorio_1_Codigo_Fonte"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/thnitschke/Downloads/Laboratorio_1_Codigo_Fonte/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/thnitschke/Downloads/Laboratorio_1_Codigo_Fonte/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/thnitschke/Downloads/Laboratorio_1_Codigo_Fonte/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/thnitschke/Downloads/Laboratorio_1_Codigo_Fonte/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/thnitschke/Downloads/Laboratorio_1_Codigo_Fonte/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/thnitschke/Downloads/Laboratorio_1_Codigo_Fonte/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/thnitschke/Downloads/Laboratorio_1_Codigo_Fonte/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/thnitschke/Downloads/Laboratorio_1_Codigo_Fonte/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/thnitschke/Downloads/Laboratorio_1_Codigo_Fonte/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/thnitschke/Downloads/Laboratorio_1_Codigo_Fonte/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/thnitschke/Downloads/Laboratorio_1_Codigo_Fonte/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/thnitschke/Downloads/Laboratorio_1_Codigo_Fonte/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/thnitschke/Downloads/Laboratorio_1_Codigo_Fonte/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/thnitschke/Downloads/Laboratorio_1_Codigo_Fonte/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/thnitschke/Downloads/Laboratorio_1_Codigo_Fonte/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Laboratorio_1_Codigo_Fonte">
+				<Option output="/home/thnitschke/Downloads/Laboratorio_1_Codigo_Fonte/cmake-build-debug/Laboratorio_1_Codigo_Fonte" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/thnitschke/Downloads/Laboratorio_1_Codigo_Fonte/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/thnitschke/Downloads/Laboratorio_1_Codigo_Fonte/."/>
+					<Add directory="/home/thnitschke/Downloads/Laboratorio_1_Codigo_Fonte/bin"/>
+					<Add directory="/home/thnitschke/Downloads/Laboratorio_1_Codigo_Fonte/include"/>
+					<Add directory="/home/thnitschke/Downloads/Laboratorio_1_Codigo_Fonte/include/glad"/>
+					<Add directory="/home/thnitschke/Downloads/Laboratorio_1_Codigo_Fonte/include/GLFW"/>
+					<Add directory="/home/thnitschke/Downloads/Laboratorio_1_Codigo_Fonte/include/KHR"/>
+					<Add directory="/home/thnitschke/Downloads/Laboratorio_1_Codigo_Fonte/lib"/>
+					<Add directory="/home/thnitschke/Downloads/Laboratorio_1_Codigo_Fonte/lib-linux"/>
+					<Add directory="/home/thnitschke/Downloads/Laboratorio_1_Codigo_Fonte/src"/>
+					<Add directory="/usr/include/c++/5"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
+					<Add directory="/usr/include/c++/5/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/thnitschke/Downloads/Laboratorio_1_Codigo_Fonte/cmake-build-debug/Makefile&quot;  VERBOSE=1 Laboratorio_1_Codigo_Fonte"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/thnitschke/Downloads/Laboratorio_1_Codigo_Fonte/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/thnitschke/Downloads/Laboratorio_1_Codigo_Fonte/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/thnitschke/Downloads/Laboratorio_1_Codigo_Fonte/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Laboratorio_1_Codigo_Fonte/fast">
+				<Option output="/home/thnitschke/Downloads/Laboratorio_1_Codigo_Fonte/cmake-build-debug/Laboratorio_1_Codigo_Fonte" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/thnitschke/Downloads/Laboratorio_1_Codigo_Fonte/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/thnitschke/Downloads/Laboratorio_1_Codigo_Fonte/."/>
+					<Add directory="/home/thnitschke/Downloads/Laboratorio_1_Codigo_Fonte/bin"/>
+					<Add directory="/home/thnitschke/Downloads/Laboratorio_1_Codigo_Fonte/include"/>
+					<Add directory="/home/thnitschke/Downloads/Laboratorio_1_Codigo_Fonte/include/glad"/>
+					<Add directory="/home/thnitschke/Downloads/Laboratorio_1_Codigo_Fonte/include/GLFW"/>
+					<Add directory="/home/thnitschke/Downloads/Laboratorio_1_Codigo_Fonte/include/KHR"/>
+					<Add directory="/home/thnitschke/Downloads/Laboratorio_1_Codigo_Fonte/lib"/>
+					<Add directory="/home/thnitschke/Downloads/Laboratorio_1_Codigo_Fonte/lib-linux"/>
+					<Add directory="/home/thnitschke/Downloads/Laboratorio_1_Codigo_Fonte/src"/>
+					<Add directory="/usr/include/c++/5"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
+					<Add directory="/usr/include/c++/5/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/thnitschke/Downloads/Laboratorio_1_Codigo_Fonte/cmake-build-debug/Makefile&quot;  VERBOSE=1 Laboratorio_1_Codigo_Fonte/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/thnitschke/Downloads/Laboratorio_1_Codigo_Fonte/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/thnitschke/Downloads/Laboratorio_1_Codigo_Fonte/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/thnitschke/Downloads/Laboratorio_1_Codigo_Fonte/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/thnitschke/Downloads/Laboratorio_1_Codigo_Fonte/LEIAME.txt">
+			<Option target="Laboratorio_1_Codigo_Fonte"/>
+		</Unit>
+		<Unit filename="/home/thnitschke/Downloads/Laboratorio_1_Codigo_Fonte/Laboratorio_1.cbp">
+			<Option target="Laboratorio_1_Codigo_Fonte"/>
+		</Unit>
+		<Unit filename="/home/thnitschke/Downloads/Laboratorio_1_Codigo_Fonte/Laboratorio_1.layout">
+			<Option target="Laboratorio_1_Codigo_Fonte"/>
+		</Unit>
+		<Unit filename="/home/thnitschke/Downloads/Laboratorio_1_Codigo_Fonte/Makefile">
+			<Option target="Laboratorio_1_Codigo_Fonte"/>
+		</Unit>
+		<Unit filename="/home/thnitschke/Downloads/Laboratorio_1_Codigo_Fonte/include/GLFW/glfw3.h">
+			<Option target="Laboratorio_1_Codigo_Fonte"/>
+		</Unit>
+		<Unit filename="/home/thnitschke/Downloads/Laboratorio_1_Codigo_Fonte/include/GLFW/glfw3native.h">
+			<Option target="Laboratorio_1_Codigo_Fonte"/>
+		</Unit>
+		<Unit filename="/home/thnitschke/Downloads/Laboratorio_1_Codigo_Fonte/include/KHR/khrplatform.h">
+			<Option target="Laboratorio_1_Codigo_Fonte"/>
+		</Unit>
+		<Unit filename="/home/thnitschke/Downloads/Laboratorio_1_Codigo_Fonte/include/glad/glad.h">
+			<Option target="Laboratorio_1_Codigo_Fonte"/>
+		</Unit>
+		<Unit filename="/home/thnitschke/Downloads/Laboratorio_1_Codigo_Fonte/include/utils.h">
+			<Option target="Laboratorio_1_Codigo_Fonte"/>
+		</Unit>
+		<Unit filename="/home/thnitschke/Downloads/Laboratorio_1_Codigo_Fonte/lib-linux/libglfw3.a">
+			<Option target="Laboratorio_1_Codigo_Fonte"/>
+		</Unit>
+		<Unit filename="/home/thnitschke/Downloads/Laboratorio_1_Codigo_Fonte/lib/glfw3.dll">
+			<Option target="Laboratorio_1_Codigo_Fonte"/>
+		</Unit>
+		<Unit filename="/home/thnitschke/Downloads/Laboratorio_1_Codigo_Fonte/lib/libglfw3.a">
+			<Option target="Laboratorio_1_Codigo_Fonte"/>
+		</Unit>
+		<Unit filename="/home/thnitschke/Downloads/Laboratorio_1_Codigo_Fonte/lib/libglfw3dll.a">
+			<Option target="Laboratorio_1_Codigo_Fonte"/>
+		</Unit>
+		<Unit filename="/home/thnitschke/Downloads/Laboratorio_1_Codigo_Fonte/src/glad.c">
+			<Option target="Laboratorio_1_Codigo_Fonte"/>
+		</Unit>
+		<Unit filename="/home/thnitschke/Downloads/Laboratorio_1_Codigo_Fonte/src/main.cpp">
+			<Option target="Laboratorio_1_Codigo_Fonte"/>
+		</Unit>
+		<Unit filename="/home/thnitschke/Downloads/Laboratorio_1_Codigo_Fonte/src/shader_fragment.glsl">
+			<Option target="Laboratorio_1_Codigo_Fonte"/>
+		</Unit>
+		<Unit filename="/home/thnitschke/Downloads/Laboratorio_1_Codigo_Fonte/src/shader_vertex.glsl">
+			<Option target="Laboratorio_1_Codigo_Fonte"/>
+		</Unit>
+		<Unit filename="/home/thnitschke/Downloads/Laboratorio_1_Codigo_Fonte/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
