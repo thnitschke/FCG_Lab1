@@ -31,9 +31,6 @@
 // Headers locais, definidos na pasta "include/"
 #include "utils.h"
 
-// PI
-#define PI 3.1415926535897932384626433832795
-
 // Declaração de várias funções utilizadas em main().  Essas estão definidas
 // logo após a definição de main() neste arquivo.
 GLuint BuildTriangles(); // Constrói triângulos para renderização
@@ -175,7 +172,7 @@ int main()
         //                |          |  |                 +---   começam em indices[0] (veja função BuildTriangles()).
         //                |          |  |                 |
         //                V          V  V                 V
-        glDrawElements(GL_TRIANGLE_STRIP, 200, GL_UNSIGNED_BYTE, 0);
+        glDrawElements(GL_TRIANGLE_FAN, 52, GL_UNSIGNED_BYTE, 0);
 
         // "Desligamos" o VAO, evitando assim que operações posteriores venham a
         // alterar o mesmo. Isso evita bugs.
@@ -218,28 +215,37 @@ GLuint BuildTriangles()
     //
     // Este vetor "NDC_coefficients" define a GEOMETRIA (veja slide 114 do documento "Aula_04_Modelagem_Geometrica_3D.pdf").
     //
+    GLfloat NDC_coefficients[] = {
+    //    X      Y     Z     W
+        // descricao do trabalho = 0,7unidades do vertice central ateh os demais, e 17 no total.
+        // logo temos 3 vertices por quadrante, e usando alguma trigonometria descobre-se os valores dos pontos.
 
-    int vertexNumber = 32;
-    GLfloat NDC_coefficients[34];
-        int i;
-        for(i=0; i<(vertexNumber); i++){
-            if (i % 2 == 0){
+         // central
+         0.0f,  0.0f, 0.0f, 1.0f,   // 0
+         // nos eixos
+         0.0f, -0.7f, 0.0f, 1.0f,   // 1 -y
+         0.7f,  0.0f, 0.0f, 1.0f,   // 2 +x
+         0.0f,  0.7f, 0.0f, 1.0f,   // 3 +y
+        -0.7f,  0.0f, 0.0f, 1.0f,   // 4 -x
+         //+x+y
+         0.6467f,  0.2679f, 0.0f, 1.0f,     // 5
+         0.495f,   0.495f,  0.0f, 1.0f,     // 6
+         0.2679f,  0.6467f, 0.0f, 1.0f,     // 7
+         //-x+y
+        -0.6467f,  0.2679f, 0.0f, 1.0f,     // 8
+        -0.495f,   0.495f,  0.0f, 1.0f,     // 9
+        -0.2679f,  0.6467f, 0.0f, 1.0f,     // 10
+         //-x-y
+        -0.6467f, -0.2679f, 0.0f, 1.0f,     // 11
+        -0.495f,  -0.495f,  0.0f, 1.0f,     // 12
+        -0.2679f, -0.6467f, 0.0f, 1.0f,     // 13
+         //+x-y
+         0.6467f, -0.2679f, 0.0f, 1.0f,     // 14
+         0.495f,  -0.495f,  0.0f, 1.0f,     // 15
+         0.2679f, -0.6467f, 0.0f, 1.0f,     // 16
 
-                NDC_coefficients[i*4+0] = cos(PI*2 * ((float)i / (float)vertexNumber)) *0.5;
-                NDC_coefficients[i*4+1] = sin(PI*2 * ((float)i / (float)vertexNumber)) *0.5;
-                NDC_coefficients[i*4+2] = 0.0f;
-                NDC_coefficients[i*4+3] = 1.0f;
 
-            }
-            else{
-                NDC_coefficients[i*4+0] = cos(PI*2 * ((float)i / (float)vertexNumber))*0.7;
-                NDC_coefficients[i*4+1] = sin(PI*2 * ((float)i / (float)vertexNumber))*0.7;
-                NDC_coefficients[i*4+2] = 0.0f;
-                NDC_coefficients[i*4+3] = 1.0f;
-            }
-        }
-
-
+    };
 
     // Criamos o identificador (ID) de um Vertex Buffer Object (VBO).  Um VBO é
     // um buffer de memória que irá conter os valores de um certo atributo de
@@ -315,26 +321,31 @@ GLuint BuildTriangles()
     // Tal cor é definida como coeficientes RGBA: Red, Green, Blue, Alpha;
     // isto é: Vermelho, Verde, Azul, Alpha (valor de transparência).
     // Conversaremos sobre sistemas de cores nas aulas de Modelos de Iluminação.
-    GLfloat color_coefficients[128];
+    GLfloat color_coefficients[] = {
+    //  R     G     B     A
+        1.0f, 0.0f, 0.0f, 1.0f,
 
-    for(i=0; i<(vertexNumber); i++)
-    {
-        if (i % 2 != 0)
-        {
-            color_coefficients[i*4] = 0.0f;
-            color_coefficients[i*4+1] = 0.0f;
-            color_coefficients[i*4+2] = 1.0f;
-            color_coefficients[i*4+3] = 1.0f;
-        }
-        else
-        {
+        0.0f, 0.0f, 1.0f, 1.0f,
+        0.0f, 0.0f, 1.0f, 1.0f,
+        0.0f, 0.0f, 1.0f, 1.0f,
+        0.0f, 0.0f, 1.0f, 1.0f,
 
-            color_coefficients[i*4] = 1.0f;
-            color_coefficients[i*4+1] = 0.0f;
-            color_coefficients[i*4+2] = 0.0f;
-            color_coefficients[i*4+3] = 1.0f;
-        }
-    }
+        0.0f, 0.0f, 1.0f, 1.0f,
+        0.0f, 0.0f, 1.0f, 1.0f,
+        0.0f, 0.0f, 1.0f, 1.0f,
+        0.0f, 0.0f, 1.0f, 1.0f,
+
+        0.0f, 0.0f, 1.0f, 1.0f,
+        0.0f, 0.0f, 1.0f, 1.0f,
+        0.0f, 0.0f, 1.0f, 1.0f,
+        0.0f, 0.0f, 1.0f, 1.0f,
+
+        0.0f, 0.0f, 1.0f, 1.0f,
+        0.0f, 0.0f, 1.0f, 1.0f,
+        0.0f, 0.0f, 1.0f, 1.0f,
+        0.0f, 0.0f, 1.0f, 1.0f
+
+    };
     GLuint VBO_color_coefficients_id;
     glGenBuffers(1, &VBO_color_coefficients_id);
     glBindBuffer(GL_ARRAY_BUFFER, VBO_color_coefficients_id);
@@ -353,17 +364,35 @@ GLuint BuildTriangles()
     //
     // Este vetor "indices" define a TOPOLOGIA (veja slide 114 do documento "Aula_04_Modelagem_Geometrica_3D.pdf").
     //
+    GLubyte indices[] = { 0,3,10, 0,10,9,  0,9,8,   0,8,4,
+                          0,4,11, 0,11,12, 0,12,13, 0,13,1,
+                          0,1,16, 0,16,15, 0,15,14,  0,14,2,
+                          0,2,5,  0,5,6,   0,6,7,   0,7,3 }; // GLubyte: valores entre 0 e 255 (8 bits sem sinal).
 
-    GLubyte indices[34];
-
-        int j=0;
-
-        for(j=0; j<(vertexNumber); j++)
-        {
-            indices[j] = j;
-        }
-        indices[32] = 0;
-        indices[33] = 1;
+         //    X      Y     Z     W
+         // central
+//         0.0f,  0.0f, 0.0f, 1.0f,   // 0
+         // nos eixos
+//         0.0f, -0.7f, 0.0f, 1.0f,   // 1 -y
+//         0.7f,  0.0f, 0.0f, 1.0f,   // 2 +x
+//         0.0f,  0.7f, 0.0f, 1.0f,   // 3 +y
+//         -0.7f, 0.0f, 0.0f, 1.0f,   // 4 -x
+         //+x+y
+//         0.6467f,  0.2679f, 0.0f, 1.0f,     // 5
+//         0.495f,   0.495f,  0.0f, 1.0f,     // 6
+//         0.2679f,  0.6467f, 0.0f, 1.0f,     // 7
+         //-x+y
+//        -0.6467f,  0.2679f, 0.0f, 1.0f,     // 8
+//        -0.495f,   0.495f,  0.0f, 1.0f,     // 9
+//        -0.2679f,  0.6467f, 0.0f, 1.0f,     // 10
+         //-x-y
+//        -0.6467f, -0.2679f, 0.0f, 1.0f,     // 11
+//        -0.495f,  -0.495f,  0.0f, 1.0f,     // 12
+//        -0.2679f, -0.6467f, 0.0f, 1.0f,     // 13
+         //+x-y
+//         0.6467f, -0.2679f, 0.0f, 1.0f,     // 14
+//         0.495f,  -0.495f,  0.0f, 1.0f,     // 15
+//         0.2679f, -0.6467f, 0.0f, 1.0f,     // 16
 
     // Criamos um buffer OpenGL para armazenar os índices acima
     GLuint indices_id;
