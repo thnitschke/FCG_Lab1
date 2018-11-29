@@ -10,7 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3692d43e-860b-46e3-8d09-90f1911b4f89" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main-binary.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main-binary.cpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -58,23 +59,38 @@
         </counts>
       </usages-collector>
     </session>
+    <session id="423929986">
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="cpp" value="1033" />
+          <entry key="txt" value="47" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="ObjectiveC" value="1033" />
+          <entry key="PLAIN_TEXT" value="47" />
+        </counts>
+      </usages-collector>
+    </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main-strip.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="268">
-              <caret line="303" column="77" selection-start-line="303" selection-start-column="77" selection-end-line="303" selection-end-column="77" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main-binary.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="248">
-              <caret line="76" column="73" selection-start-line="76" selection-start-column="73" selection-end-line="76" selection-end-column="73" />
+            <state relative-caret-position="267">
+              <caret line="231" column="58" lean-forward="true" selection-start-line="231" selection-start-column="58" selection-end-line="231" selection-end-column="58" />
+              <folding>
+                <element signature="e#8337#17072#0" />
+                <element signature="e#25665#34139#0" />
+                <element signature="e#17190#25664#0" />
+                <element signature="e#34148#42626#0" />
+                <element signature="e#17191#26127#0" />
+                <element signature="e#26128#35016#0" />
+                <element signature="e#35017#43905#0" />
+                <element signature="e#43906#52794#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -91,7 +107,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/shader_vertex.glsl">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
+            <state relative-caret-position="390">
               <caret line="13" column="11" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
             </state>
           </provider>
@@ -102,12 +118,28 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>sudo apt-get install build-essential make libx11-dev libxrandr-dev libxinerama-dev libxcursor-dev libxcb1-dev libxext-dev libxrender-dev libxfixes-dev libxau-dev libxdmcp-dev</find>
+      <find>BuildTriangles</find>
+      <find>vertex_array_object_id</find>
+      <find>VBO_NDC_coefficients_id</find>
+      <find>BuildNumberZero</find>
     </findStrings>
+    <replaceStrings>
+      <replace>128</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="thnitschke &lt;thiago.nitschke@gmail.com&gt;" />
+      </list>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Makefile" />
+        <option value="$PROJECT_DIR$/src/main-binary.cpp" />
       </list>
     </option>
   </component>
@@ -117,6 +149,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
+  <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-1" />
     <option name="y" value="-5" />
@@ -143,31 +176,7 @@
             <path>
               <item name="FCG_Lab1" type="b2602c69:ProjectViewProjectNode" />
               <item name="FCG_Lab1" type="462c0819:PsiDirectoryNode" />
-              <item name="bin" type="462c0819:PsiDirectoryNode" />
-              <item name="Linux" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FCG_Lab1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FCG_Lab1" type="462c0819:PsiDirectoryNode" />
               <item name="include" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FCG_Lab1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FCG_Lab1" type="462c0819:PsiDirectoryNode" />
-              <item name="include" type="462c0819:PsiDirectoryNode" />
-              <item name="glad" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FCG_Lab1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FCG_Lab1" type="462c0819:PsiDirectoryNode" />
-              <item name="include" type="462c0819:PsiDirectoryNode" />
-              <item name="GLFW" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FCG_Lab1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FCG_Lab1" type="462c0819:PsiDirectoryNode" />
-              <item name="include" type="462c0819:PsiDirectoryNode" />
-              <item name="KHR" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="FCG_Lab1" type="b2602c69:ProjectViewProjectNode" />
@@ -223,16 +232,23 @@
       <workItem from="1541875390627" duration="376000" />
       <workItem from="1541876883940" duration="7000" />
     </task>
+    <task id="LOCAL-00001" summary="Remover configuração do CMake do projeto">
+      <created>1543456575905</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1543456575905</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3009000" />
+    <option name="totallyTimeSpent" value="11342000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="960" y="24" width="960" height="1056" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25657895" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.25657895" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -244,8 +260,8 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info active="true" anchor="bottom" id="Messages" order="8" visible="true" weight="0.3286638" />
-      <window_info anchor="bottom" id="Terminal" order="9" weight="0.17349137" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.17267759" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.32896176" />
       <window_info anchor="bottom" id="Version Control" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="CMake" order="12" weight="0.32896176" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -259,6 +275,14 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
+    <MESSAGE value="Remover configuração do CMake do projeto" />
+    <option name="LAST_COMMIT_MESSAGE" value="Remover configuração do CMake do projeto" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -318,6 +342,44 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="66">
           <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main-strip.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="58">
+          <caret line="296" column="17" lean-forward="true" selection-end-line="554" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/shader_vertex.glsl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="13" column="11" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/shader_fragment.glsl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="15" column="46" selection-start-line="15" selection-start-column="46" selection-end-line="15" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main-binary.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="267">
+          <caret line="231" column="58" lean-forward="true" selection-start-line="231" selection-start-column="58" selection-end-line="231" selection-end-column="58" />
+          <folding>
+            <element signature="e#8337#17072#0" />
+            <element signature="e#25665#34139#0" />
+            <element signature="e#17190#25664#0" />
+            <element signature="e#34148#42626#0" />
+            <element signature="e#17191#26127#0" />
+            <element signature="e#26128#35016#0" />
+            <element signature="e#35017#43905#0" />
+            <element signature="e#43906#52794#0" />
+          </folding>
         </state>
       </provider>
     </entry>
