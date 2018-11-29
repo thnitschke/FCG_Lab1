@@ -23,6 +23,7 @@
 #include <string>
 #include <fstream>
 #include <sstream>
+#include <iostream>
 
 // Headers das bibliotecas OpenGL
 #include <glad/glad.h>   // Criação de contexto OpenGL 3.3
@@ -30,6 +31,8 @@
 
 // Headers locais, definidos na pasta "include/"
 #include "utils.h"
+
+using namespace std;
 
 // Declaração de várias funções utilizadas em main().  Essas estão definidas
 // logo após a definição de main() neste arquivo.
@@ -178,60 +181,80 @@ int main() {
         // os shaders de vértice e fragmentos).
         glUseProgram(program_id);
 
+        // Código de funcionalidade do contador de tempo
+        int seconds = (int) glfwGetTime();
+        // Variáveis para ativação ou desativação dos objetos na tela, conforme tempo,
+        // são  resultado da operação binário AND, com uma máscara de bits
+        bool firstBit = seconds & 0x1;
+        bool secondBit = seconds & 0x2;
+        bool thirdBit = seconds & 0x4;
+        bool fourthBit = seconds & 0x8;
+
         // "Ligamos" o VAO. Informamos que queremos utilizar os atributos de
         // vértices apontados pelo VAO criado pela função BuildNumberZero(). Veja
         // comentários detalhados dentro da definição de BuildNumberZero().
-        glBindVertexArray(vertex_array_object_id_1);
+        if (not fourthBit) {
+            glBindVertexArray(vertex_array_object_id_1);
 
-        // Pedimos para a GPU rasterizar os vértices apontados pelo VAO como
-        // triângulos.
-        //
-        //                +--- Veja slide 150 do documento "Aula_04_Modelagem_Geometrica_3D.pdf".
-        //                |          +--- O array "indices[]" contém 6 índices (veja função BuildNumberZero()).
-        //                |          |  +--- Os índices são do tipo "GLubyte" (8 bits sem sinal)
-        //                |          |  |                 +--- Vértices começam em indices[0] (veja função BuildNumberZero()).
-        //                |          |  |                 |
-        //                V          V  V                 V
-        glDrawElements(GL_TRIANGLE_STRIP, 34, GL_UNSIGNED_BYTE, 0);
+            // Pedimos para a GPU rasterizar os vértices apontados pelo VAO como
+            // triângulos.
+            //
+            //                +--- Veja slide 150 do documento "Aula_04_Modelagem_Geometrica_3D.pdf".
+            //                |          +--- O array "indices[]" contém 6 índices (veja função BuildNumberZero()).
+            //                |          |  +--- Os índices são do tipo "GLubyte" (8 bits sem sinal)
+            //                |          |  |                 +--- Vértices começam em indices[0] (veja função BuildNumberZero()).
+            //                |          |  |                 |
+            //                V          V  V                 V
+            glDrawElements(GL_TRIANGLE_STRIP, 34, GL_UNSIGNED_BYTE, 0);
 
-        // "Desligamos" o VAO, evitando assim que operações posteriores venham a
-        // alterar o mesmo. Isso evita bugs.
-        glBindVertexArray(0);
-
-        // Faz o mesmo processo para BuildNumberOne()
-        glBindVertexArray(vertex_array_object_id_2);
-        glDrawElements(GL_TRIANGLE_STRIP, 7, GL_UNSIGNED_BYTE, 0);
-        glBindVertexArray(0);
+            // "Desligamos" o VAO, evitando assim que operações posteriores venham a
+            // alterar o mesmo. Isso evita bugs.
+            glBindVertexArray(0);
+        } else {
+            // Faz o mesmo processo para BuildNumberOne()
+            glBindVertexArray(vertex_array_object_id_2);
+            glDrawElements(GL_TRIANGLE_STRIP, 7, GL_UNSIGNED_BYTE, 0);
+            glBindVertexArray(0);
+        }
 
         // Pos 2
-        // Zero
-        glBindVertexArray(vertex_array_object_id_1_pos_2);
-        glDrawElements(GL_TRIANGLE_STRIP, 34, GL_UNSIGNED_BYTE, 0);
-        glBindVertexArray(0);
-        // One
-        glBindVertexArray(vertex_array_object_id_2_pos_2);
-        glDrawElements(GL_TRIANGLE_STRIP, 7, GL_UNSIGNED_BYTE, 0);
-        glBindVertexArray(0);
+        if (not thirdBit) {
+            // Zero
+            glBindVertexArray(vertex_array_object_id_1_pos_2);
+            glDrawElements(GL_TRIANGLE_STRIP, 34, GL_UNSIGNED_BYTE, 0);
+            glBindVertexArray(0);
+        } else {
+            // One
+            glBindVertexArray(vertex_array_object_id_2_pos_2);
+            glDrawElements(GL_TRIANGLE_STRIP, 7, GL_UNSIGNED_BYTE, 0);
+            glBindVertexArray(0);
+        }
 
         // Pos 3
-        // Zero
-        glBindVertexArray(vertex_array_object_id_1_pos_3);
-        glDrawElements(GL_TRIANGLE_STRIP, 34, GL_UNSIGNED_BYTE, 0);
-        glBindVertexArray(0);
-        // One
-        glBindVertexArray(vertex_array_object_id_2_pos_3);
-        glDrawElements(GL_TRIANGLE_STRIP, 7, GL_UNSIGNED_BYTE, 0);
-        glBindVertexArray(0);
+        if (not secondBit) {
+            // Zero
+            glBindVertexArray(vertex_array_object_id_1_pos_3);
+            glDrawElements(GL_TRIANGLE_STRIP, 34, GL_UNSIGNED_BYTE, 0);
+            glBindVertexArray(0);
+        } else {
+            // One
+            glBindVertexArray(vertex_array_object_id_2_pos_3);
+            glDrawElements(GL_TRIANGLE_STRIP, 7, GL_UNSIGNED_BYTE, 0);
+            glBindVertexArray(0);
+        }
 
         // Pos 4
-        // Zero
-        glBindVertexArray(vertex_array_object_id_1_pos_4);
-        glDrawElements(GL_TRIANGLE_STRIP, 34, GL_UNSIGNED_BYTE, 0);
-        glBindVertexArray(0);
-        // One
-        glBindVertexArray(vertex_array_object_id_2_pos_4);
-        glDrawElements(GL_TRIANGLE_STRIP, 7, GL_UNSIGNED_BYTE, 0);
-        glBindVertexArray(0);
+        if (not firstBit) {
+            // Zero
+            glBindVertexArray(vertex_array_object_id_1_pos_4);
+            glDrawElements(GL_TRIANGLE_STRIP, 34, GL_UNSIGNED_BYTE, 0);
+            glBindVertexArray(0);
+        } else {
+            // One
+            glBindVertexArray(vertex_array_object_id_2_pos_4);
+            glDrawElements(GL_TRIANGLE_STRIP, 7, GL_UNSIGNED_BYTE, 0);
+            glBindVertexArray(0);
+        }
 
         // O framebuffer onde OpenGL executa as operações de renderização não
         // é o mesmo que está sendo mostrado para o usuário, caso contrário
