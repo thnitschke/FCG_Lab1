@@ -170,7 +170,7 @@ int main() {
         //                |          |  |                 +--- Vértices começam em indices[0] (veja função BuildTriangles()).
         //                |          |  |                 |
         //                V          V  V                 V
-        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_BYTE, 0);
+        glDrawElements(GL_TRIANGLE_STRIP, 34, GL_UNSIGNED_BYTE, 0);
 
         // "Desligamos" o VAO, evitando assim que operações posteriores venham a
         // alterar o mesmo. Isso evita bugs.
@@ -212,13 +212,25 @@ GLuint BuildTriangles() {
     //
     // Este vetor "NDC_coefficients" define a GEOMETRIA (veja slide 114 do documento "Aula_04_Modelagem_Geometrica_3D.pdf").
     //
-    GLfloat NDC_coefficients[] = {
-            //    X      Y     Z     W
-            -0.5f, -0.5f, 0.0f, 1.0f,
-            0.5f, -0.5f, 0.0f, 1.0f,
-            0.0f, 0.5f, 0.0f, 1.0f,
-            0.5f, 0.5f, 0.0f, 1.0f
-    };
+    GLfloat NDC_coefficients[128];
+
+    const double PI = acos(-1);
+
+    GLfloat angle = 0;
+    for (int i = 0; i < 64; i += 4) {
+        // Vertices Externos
+        NDC_coefficients[i] = 0.7f * cos(angle); // X
+        NDC_coefficients[i + 1] = 0.7f * sin(angle); // Y
+        NDC_coefficients[i + 2] = 0.0f; // Z
+        NDC_coefficients[i + 3] = 1.0f; // W
+        // Vertices Internos
+        NDC_coefficients[i + 64] = 0.5f * cos(angle); // X
+        NDC_coefficients[i + 65] = 0.5f * sin(angle); // Y
+        NDC_coefficients[i + 66] = 0.0f; // Z
+        NDC_coefficients[i + 67] = 1.0f; // W
+
+        angle += PI / 8;
+    }
 
     // Criamos o identificador (ID) de um Vertex Buffer Object (VBO).  Um VBO é
     // um buffer de memória que irá conter os valores de um certo atributo de
@@ -294,13 +306,22 @@ GLuint BuildTriangles() {
     // Tal cor é definida como coeficientes RGBA: Red, Green, Blue, Alpha;
     // isto é: Vermelho, Verde, Azul, Alpha (valor de transparência).
     // Conversaremos sobre sistemas de cores nas aulas de Modelos de Iluminação.
-    GLfloat color_coefficients[] = {
-            //  R     G     B     A
-            1.0f, 0.0f, 0.0f, 1.0f,
-            0.0f, 1.0f, 0.0f, 1.0f,
-            0.0f, 0.0f, 1.0f, 1.0f,
-            0.0f, 1.0f, 1.0f, 1.0f
-    };
+
+    GLfloat color_coefficients[128];
+
+    for (int i = 0; i < 64; i += 4) {
+        // Vertices Externos
+        color_coefficients[i] = 0.0f; // R
+        color_coefficients[i + 1] = 0.0f; // G
+        color_coefficients[i + 2] = 1.0f; // B
+        color_coefficients[i + 3] = 1.0f; // A
+        // Vertices Internos
+        color_coefficients[i + 64] = 1.0f; // R
+        color_coefficients[i + 65] = 0.0f; // G
+        color_coefficients[i + 66] = 0.0f; // B
+        color_coefficients[i + 67] = 1.0f; // A
+    }
+
     GLuint VBO_color_coefficients_id;
     glGenBuffers(1, &VBO_color_coefficients_id);
     glBindBuffer(GL_ARRAY_BUFFER, VBO_color_coefficients_id);
@@ -319,7 +340,18 @@ GLuint BuildTriangles() {
     //
     // Este vetor "indices" define a TOPOLOGIA (veja slide 114 do documento "Aula_04_Modelagem_Geometrica_3D.pdf").
     //
-    GLubyte indices[] = {0, 1, 2, 2, 1, 3}; // GLubyte: valores entre 0 e 255 (8 bits sem sinal).
+    GLubyte indices[34]; // GLubyte: valores entre 0 e 255 (8 bits sem sinal).
+    indices[0] = 0;
+    indices[1] = 16;
+    indices[32] = 0;
+    indices[33] = 16;
+
+    for (int i = 2; i < 32; i++) {
+        if (i % 2 == 0)
+            indices[i] = i / 2;
+        else
+            indices[i] = 16 + (i - 1) / 2;
+    }
 
     // Criamos um buffer OpenGL para armazenar os índices acima
     GLuint indices_id;
