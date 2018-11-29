@@ -1,1 +1,0 @@
-/usr/bin/c++  -g   CMakeFiles/Laboratorio_1_Codigo_Fonte.dir/src/glad.c.o CMakeFiles/Laboratorio_1_Codigo_Fonte.dir/src/main.cpp.o  -o Laboratorio_1_Codigo_Fonte 

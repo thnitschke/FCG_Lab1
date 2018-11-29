@@ -1,3 +1,0 @@
-/home/thnitschke/Downloads/Laboratorio_1_Codigo_Fonte/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/thnitschke/Downloads/Laboratorio_1_Codigo_Fonte/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/thnitschke/Downloads/Laboratorio_1_Codigo_Fonte/cmake-build-debug/CMakeFiles/Laboratorio_1_Codigo_Fonte.dir
